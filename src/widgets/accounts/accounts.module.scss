@@ -1,0 +1,8 @@
+.wrapper {
+  background-color: rebeccapurple;
+
+  &__parent-block {
+    display: flex;
+    flex-wrap: wrap-reverse;
+  }
+}
