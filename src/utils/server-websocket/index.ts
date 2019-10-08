@@ -1,2 +1,2 @@
 
-export { wsSend, wsConnect } from './server-websocket';
+export { wsConnection } from './server-websocket';

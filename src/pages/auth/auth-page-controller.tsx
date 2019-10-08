@@ -1,34 +1,22 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { goAuth } from '@/modules/auth';
+import { waitAuth } from '@/modules/auth';
 import { AuthPage } from './auth-page';
-import { wsConnect, wsSend } from '@/utils/server-websocket';
+// import { goToPage } from '@/utils/route-utils';
 
 interface IAuthPageController {
   path: string,
-  goAuth: () => void,
+  waitAuth: () => void,
 };
 
 export class AuthPageControllerComponent extends React.PureComponent<IAuthPageController> {
   handleAuth = async () => {
-    const response = await this.props.goAuth();
+    const response = await this.props.waitAuth();
     // @ts-ignore
     if (response) {
       // @ts-ignore
       this.$f7router.navigate({ name: 'home' });
     }
-  };
-
-  handleWSconnect = () => {
-    wsConnect();
-  };
-
-  handleWsSend = () => {
-    wsSend();
-  }
-
-  handlePopupClose = () => {
-    // closeWindow();
   };
   
   render() {
@@ -36,7 +24,7 @@ export class AuthPageControllerComponent extends React.PureComponent<IAuthPageCo
       <AuthPage
         handleAuth={this.handleAuth}
         // handleAuth={this.handleWSconnect}
-        handleMessage={this.handleWsSend}
+        // handleMessage={this.handleWsSend}
         path="/"
       />
     );
@@ -44,7 +32,7 @@ export class AuthPageControllerComponent extends React.PureComponent<IAuthPageCo
 }
 
 const mapDispatchToProps = {
-  goAuth,
+  waitAuth,
 };
 
 export const AuthPageController = connect(

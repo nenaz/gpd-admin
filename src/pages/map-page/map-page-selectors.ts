@@ -2,14 +2,18 @@ import { get, toNumber } from 'lodash';
 import { USER_STORE_KEY } from "@/modules/coordinates";
 
 import { createSelector } from 'reselect';
+import { RECEIVER_PAGE_STORE_KEY } from '../receiver-page';
+import { getActiveUserId, getUsers } from '../receiver-page/receiver-page-selectors';
 // import { TRANSMITTER_PAGE_STORE_KEY } from '../transmitter-page/transmitter-page-constants';
 // import { MAP_PAGE_STORE_KEY } from './map-page-constants';
 
 // // const MapPageState = state => state[MAP_PAGE_STORE_KEY];
-  const MapPageState = (state: any) => state[USER_STORE_KEY];
+  const MapPageState = (state: any) => state[RECEIVER_PAGE_STORE_KEY];
 
 export const getCoordinates = createSelector(
   MapPageState,
+  getActiveUserId,
+  getUsers,
   (mapState: any) => {
     return ({
       // latitude: 55.75,

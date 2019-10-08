@@ -10,7 +10,7 @@ export const HOME_PAGE_WIDGETS_LIST = [
   // { component : <Accounts /> },
   // { component : <Balance /> },
   // { component : <Statement /> },
-  // { component: <ReceiverPage /> },
+  { component: <ReceiverPage /> },
   // { component: <TransmitterPage /> },
-  { component: <MapPage /> },
+  // { component: <MapPage /> },
 ];

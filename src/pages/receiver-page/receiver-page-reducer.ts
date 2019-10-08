@@ -1,4 +1,4 @@
-import { FETCH_USERS } from './receiver-page-actions';
+import { FETCH_USERS, SET_ACTIVE_USER } from './receiver-page-actions';
 // import { SET_ACTIVE_USER_ID } from '@/modules/users';
 
 const INITIAL_VALUES = {
@@ -12,10 +12,10 @@ export const ReceiverPageReducer = (state = INITIAL_VALUES, action: any) => {
       ...state,
       ...payload,
     });
-    // case SET_ACTIVE_USER_ID: return({
-    //   ...state,
-    //   activeUserId: payload,
-    // });
+    case SET_ACTIVE_USER: return({
+      ...state,
+      ...payload,
+    });
     default:
       return state;
   }

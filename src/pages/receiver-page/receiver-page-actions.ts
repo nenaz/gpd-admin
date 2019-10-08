@@ -25,3 +25,14 @@ export const fetchAllUsers = () => (dispatch: Dispatch, getState: () => any) => 
       })
     })
 };
+
+export const SET_ACTIVE_USER = `${RECEIVER_PAGE_STORE_KEY}/SET_ACTIVE_USER`;
+
+export const setActiveUserId = (userId: string) => (dispatch: Function, getState: Function) => {
+  dispatch({
+    type: SET_ACTIVE_USER,
+    payload: {
+      activeUserId: userId, 
+    }
+  })
+};

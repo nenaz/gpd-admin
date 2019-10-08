@@ -27,7 +27,7 @@ export class Map extends React.PureComponent<IMap> {
             defaultState={{ center: [coordinates.latitude, coordinates.longitude], zoom: 12 }}
             style={{
               width: '100%',
-              height: '300px',
+              height: '80vh',
             }}
             state={{ center: [coordinates.latitude, coordinates.longitude], zoom: 12 }}
           >

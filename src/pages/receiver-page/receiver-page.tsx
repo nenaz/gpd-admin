@@ -1,35 +1,29 @@
 import * as React from 'react';
 import { map } from 'lodash';
-import { Row, Col } from 'framework7-react';
 import { Page } from '@/components/page';
-import './receiver-page.scss';
-import { IUser } from './receiver-page-types';
+import { IUser, TFollowUserParams } from './receiver-page-types';
+import styles from './receiver-page.module.scss';
+import { ReceiverPageRow } from './receiver-page-row';
 
 interface IReceiverPage {
   users: IUser[],
+  handlefollowUser: (params: TFollowUserParams) => void,
 };
 
 export class ReceiverPage extends React.PureComponent<IReceiverPage> {
   render() {
-    const { users } = this.props;
-    console.log('users', users);
+    const { users, handlefollowUser } = this.props;
+    // console.log('users', users);
     // if (users) {
       return(
         <Page>
           {
             map(users, (user: IUser) => (
-              <div key={user._id}>
-                <Row>
-                  <Col className="nzReceiverPageUserNameListItem">
-                    {user.login}{user.status}
-                  </Col>
-                  <Col className="nzReceiverPageUserNameListItem">
-                    {`${user.coordinates.lat}, ${user.coordinates.lon}`}
-                  </Col>
-                  <Col>
-                    {/* <button onClick={() => followUser(user)}>Отслеживать</button> */}
-                  </Col>
-                </Row>
+              <div key={user._id} className={styles.rowBlock}>
+                <ReceiverPageRow
+                  user={user}
+                  handlefollowUser={handlefollowUser}
+                />
               </div>
             ))
           }

@@ -31,7 +31,6 @@ export class Navbar extends React.PureComponent<INavbar> {
       backLinkUrl = '',
       Component,
     } = this.props;
-    console.log('backLinkUrl', backLinkUrl);
 
     return (
       <F7Navbar {...omit(this.props, 'title')}>

@@ -8,3 +8,11 @@ export interface IUser {
   },
   status: string,
 };
+
+export type TFollowUserParams = {
+  id: string,
+  coordinates: {
+    lat: number,
+    lon: number,
+  },
+};

@@ -3,24 +3,34 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { getCoordinates } from './map-page-selectors';
 // import { getGPSCoord, getStartUserCoordinater } from './map-page-actions';
-import { setUserCoordinaterAction } from '@/modules/coordinates';
+// import { setUserCoordinaterAction } from '@/modules/coordinates';
+// import { wsConnect, wsSend } from '@/utils/server-websocket';
 import { MapPage } from './map-page';
 
 interface IMapPageControllerComponent {
-  userCoordinates: any,
-  setUserCoordinaterAction: () => void,
+  userCoordinates?: any,
+  // setUserCoordinaterAction: () => void,
 };
 
 class MapPageControllerComponent extends React.PureComponent<IMapPageControllerComponent> {
-  componentDidMount() {
-    this.props.setUserCoordinaterAction();
-  }
+  // componentDidMount() {
+  //   this.props.setUserCoordinaterAction();
+  // }
+
+  // handleWSconnect = () => {
+  //   wsConnect();
+  // };
 
   render() {
     const { userCoordinates } = this.props;
+    console.log('this.props', this.props);
     return(
-      // <MapPage {...this.props} />
       <MapPage coordinates={userCoordinates} />
+      // <MapPage
+      //   coordinates={userCoordinates}
+      //   handleWSconnect={this.handleWSconnect}
+      // />
+      // <div />
     );
   }
 };
@@ -32,7 +42,7 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = {
   // getGPSCoord,
   // getStartUserCoordinater,
-  setUserCoordinaterAction,
+  // setUserCoordinaterAction,
 };
 
 export const MapPageController = connect(

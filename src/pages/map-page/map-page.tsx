@@ -5,6 +5,7 @@ import { Page } from '@/components/page';
 
 interface IMapPage {
   coordinates: any,
+  // handleWSconnect: () => void,
 };
 
 export class MapPage extends React.PureComponent<IMapPage> {
@@ -16,7 +17,13 @@ export class MapPage extends React.PureComponent<IMapPage> {
         {/* <Map {...this.props} /> */}
         <Map coordinates={coordinates} {...this.props} />
         {/* <button onClick={() => this.props.getGPSCoord(coordinates)}> */}
-        <Button raised fill>Начать передавать координаты</Button>
+        {/* <Button
+          raised
+          fill
+          onClick={handleWSconnect}
+        >
+          Начать передавать координаты
+        </Button> */}
       </Page>
     );
   }
