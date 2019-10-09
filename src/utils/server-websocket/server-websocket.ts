@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 import { getCurrentAuthorizationToken } from '@/modules/auth';
 import { setUserCoordinatesFromServer, IUserCoordinatesFromServer } from '@/modules/coordinates';
-import { store } from '@/store';
+// import { store } from '@/store';
 // import { Socket } from 'net';
 
 // export const wsConnect = () => {
@@ -56,11 +56,11 @@ class WsConnection<IWsConnection> {
 
   wsListenCoordMessage = (message: any) => {
     // @ts-ignore
-    store.dispatch(setUserCoordinatesFromServer(message));
+    // store.dispatch(setUserCoordinatesFromServer(message));
   }
 
-  wsDisconnect = () => {
-    return this.socket.close();
+  wsDisconnect = (socket: any) => {
+    return socket.close();
   };
 };
 

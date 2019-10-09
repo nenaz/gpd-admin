@@ -49,9 +49,9 @@ export const f7params: Framework7Params = {
       name: 'mapPage',
       path: '/mapPage/',
       component: MapPage,
-      options: {
-        reloadAll: true,
-      },
+      // options: {
+      //   reloadAll: true,
+      // },
     },
   ],
 };

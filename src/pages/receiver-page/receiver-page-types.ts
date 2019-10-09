@@ -11,6 +11,7 @@ export interface IUser {
 
 export type TFollowUserParams = {
   id: string,
+  login: string,
   coordinates: {
     lat: number,
     lon: number,

@@ -1,31 +1,39 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { getCoordinates } from './map-page-selectors';
+import { getActiveUserParams } from './map-page-selectors';
 // import { getGPSCoord, getStartUserCoordinater } from './map-page-actions';
 // import { setUserCoordinaterAction } from '@/modules/coordinates';
-// import { wsConnect, wsSend } from '@/utils/server-websocket';
+import { wsConnection } from '@/utils/server-websocket';
 import { MapPage } from './map-page';
 
 interface IMapPageControllerComponent {
-  userCoordinates?: any,
-  // setUserCoordinaterAction: () => void,
+  activeUserParams: any,
+  getActiveUserParams: () => void,
 };
 
 class MapPageControllerComponent extends React.PureComponent<IMapPageControllerComponent> {
-  // componentDidMount() {
-  //   this.props.setUserCoordinaterAction();
-  // }
+  ws = null;
+  componentDidMount() {
+    // this.props.setUserCoordinaterAction();
+    // this.props.getActiveUserParams();
+    this.ws = wsConnection.wsConnect('admin');
+    console.log('ws', this.ws);
+  }
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+    wsConnection.wsDisconnect(this.ws);
+  }
 
   // handleWSconnect = () => {
   //   wsConnect();
   // };
 
   render() {
-    const { userCoordinates } = this.props;
+    const { activeUserParams } = this.props;
     console.log('this.props', this.props);
     return(
-      <MapPage coordinates={userCoordinates} />
+      <MapPage coordinates={activeUserParams.coordinates} />
       // <MapPage
       //   coordinates={userCoordinates}
       //   handleWSconnect={this.handleWSconnect}
@@ -36,7 +44,7 @@ class MapPageControllerComponent extends React.PureComponent<IMapPageControllerC
 };
 
 const mapStateToProps = createStructuredSelector({
-  userCoordinates: getCoordinates,
+  activeUserParams: getActiveUserParams,
 });
 
 const mapDispatchToProps = {

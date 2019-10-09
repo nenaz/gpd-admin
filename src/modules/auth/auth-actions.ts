@@ -26,9 +26,9 @@ export const SET_AUTH_INFO = `${AUTH_STORE_KEY}/SET_AUTH_INFO`;
 
 export const goAuth = (
   dispatch: Dispatch<any>,
-  getState: Function,
+  state: any,
 ) => {
-  const state = getState();
+  // const state = getState();
   return Send('authUser', {
     username: 't2',
     password: 't2',
@@ -53,4 +53,5 @@ export const waitAuth = () => async (dispatch: any, getState: Function) => {
   const state = getState();
   const connect = await goAuth(dispatch, state);
   getWsConnect(dispatch, state);
+  return connect;
 };

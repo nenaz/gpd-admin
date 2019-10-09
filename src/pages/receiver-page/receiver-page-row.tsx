@@ -14,6 +14,7 @@ export class ReceiverPageRow extends React.PureComponent<IReceiverPageRow> {
     const { user } = this.props;
     const params: TFollowUserParams = {
       id: get(user, '_id'),
+      login: get(user, 'login'),
       coordinates: user.coordinates,
     };
 

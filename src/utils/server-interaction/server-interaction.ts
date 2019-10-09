@@ -6,7 +6,7 @@ export const Send = (name: string, params = {}, type = 'POST') => {
   return new Promise(function (resolve, reject) {
     var xhr = new XMLHttpRequest();
     xhr.open(type, serverUrl + name, true);
-    xhr.onprogress = (event) => { }
+    // xhr.onprogress = (event) => { }
     xhr.setRequestHeader('Content-Type', 'application/json');
     const webToken = getCurrentAuthorizationToken();
     if (name !== 'newUser' && name !== 'authUser' && name !== 'setPass' && webToken) {

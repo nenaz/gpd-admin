@@ -10,9 +10,9 @@ export interface IApplicationState {
 };
 
 export const reducers = combineReducers({
-  form: formReducer,
   [ACCOUNTS_WIDGET_STORE_KEY]: accountsWidgetReducer,
   [RECEIVER_PAGE_STORE_KEY]: ReceiverPageReducer,
   [USER_STORE_KEY]: coordinatesReducer,
   [AUTH_STORE_KEY]: authReducer,
+  form: formReducer,
 });

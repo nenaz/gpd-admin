@@ -12,6 +12,7 @@ interface IAuthPageController {
 export class AuthPageControllerComponent extends React.PureComponent<IAuthPageController> {
   handleAuth = async () => {
     const response = await this.props.waitAuth();
+    console.log('response', response)
     // @ts-ignore
     if (response) {
       // @ts-ignore

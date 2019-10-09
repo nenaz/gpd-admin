@@ -4,14 +4,14 @@ import { createStructuredSelector } from 'reselect';
 // import { routeToPage } from '@/modules/routes';
 import { getUsers } from './receiver-page-selectors';
 import { ReceiverPage } from './receiver-page';
-import { fetchAllUsers, setActiveUserId } from './receiver-page-actions';
+import { fetchAllUsers, setActiveUser } from './receiver-page-actions';
 import { IUser, TFollowUserParams } from './receiver-page-types';
 
 interface IReceiverPage {
   users: IUser[],
   fetchAllUsers: () => void,
   followUser?: (params: TFollowUserParams) => void,
-  setActiveUserId: (userId: string) => void,
+  setActiveUser: (params: TFollowUserParams) => void,
 };
 
 class ReceiverPagerControllerComponent extends React.PureComponent<IReceiverPage> {
@@ -27,7 +27,7 @@ class ReceiverPagerControllerComponent extends React.PureComponent<IReceiverPage
 
   followUser = (params: TFollowUserParams) => {
     console.log('id', params);
-    this.props.setActiveUserId(params.id);
+    this.props.setActiveUser(params);
     this.routeToPage('mapPage');
   }
   
@@ -49,7 +49,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = {
-  setActiveUserId,
+  setActiveUser,
   fetchAllUsers,
 };
 

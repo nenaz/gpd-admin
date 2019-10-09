@@ -19,17 +19,17 @@ export class Map extends React.PureComponent<IMap> {
     //   lon: 50,
     // };
     const placeMark = (
-      <Placemark geometry={[coordinates.latitude, coordinates.longitude]} />
+      <Placemark geometry={[coordinates.lat, coordinates.lon]} />
     );
     return(
       <YMaps>
           <RYMap
-            defaultState={{ center: [coordinates.latitude, coordinates.longitude], zoom: 12 }}
+            defaultState={{ center: [coordinates.lat, coordinates.lon], zoom: 12 }}
             style={{
               width: '100%',
               height: '80vh',
             }}
-            state={{ center: [coordinates.latitude, coordinates.longitude], zoom: 12 }}
+            state={{ center: [coordinates.lat, coordinates.lon], zoom: 12 }}
           >
             <ZoomControl
               options={{
