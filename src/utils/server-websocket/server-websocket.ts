@@ -14,33 +14,25 @@ interface IWsConnection {
 class WsConnection<IWsConnection> {
   socket: any;
   constructor() {
-    this.socket = io('http://localhost:3002');
-    console.log('constructor');
-    // this.socket.on('newMessage', (message: any) => {
-    //   console.log('newMessage', message);
-    // });
-    // this.socket.on('receiveMessage', (message: any) => {
+    // this.socket = io('http://localhost:3002');
+    // console.log('constructor');
+    // this.socket.on('message', (message: any) => {
     //   console.log('message', message);
     // });
-    this.socket.on('message', (message: any) => {
-      console.log('message', message);
-    });
-    // this.socket.on('message-coordinates', (message: IUserCoordinatesFromServer) => {
-      this.socket.on('message-coordinates', (message: IUserCoordinatesFromServer) => {
-        console.log('message', message);
-        // console.log('store', store);
-        // return message;
+    //   this.socket.on('message-coordinates', (message: IUserCoordinatesFromServer) => {
+    //     console.log('message', message);
         
-        this.wsListenCoordMessage(message);
-      });
+    //     // this.wsListenCoordMessage(message);
+    //   });
   };
 
   wsConnect = (userTag: string) => {
     console.log('wsConnect');
-    return this.socket.on('connect', (data: any) => {
-      this.socket.emit('message', userTag, null);
-      // console.log('data', data);
-    });
+    return io('http://localhost:3002');
+    // return this.socket.on('connect', (data: any) => {
+    //   this.socket.emit('message', userTag, null);
+    //   // console.log('data', data);
+    // });
   };
 
   wsOnmessage = (fromUser: string, message: Object) => {

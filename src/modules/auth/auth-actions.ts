@@ -2,24 +2,24 @@ import Cookie from 'js-cookie';
 import { Dispatch } from 'redux';
 import { get } from 'lodash';
 import { Send } from '@/utils/server-interaction';
-import { wsConnection } from "@/utils/server-websocket";
+// import { wsConnection } from "@/utils/server-websocket";
 import { ACCESS_TOKEN_COOKIE_KEY, AUTH_TOKEN_COOKIE_EXPIRES, AUTH_STORE_KEY } from './auth-consts';
 import { getAuthUserId } from './auth-selectors';
 
 
 const getWsConnect = (dispatch: Function, state: any) => {
-  const connect = wsConnection.wsConnect('admin');
-  if (connect.id) {
-    const userId = getAuthUserId(state);
-    console.log('connect', connect.id);
-    dispatch({
-      type: 'SET_WS_CONNECT',
-      payload: {
-        connectId: connect.id,
-        userId,
-      },
-    })
-  }
+  // const connect = wsConnection.wsConnect('admin');
+  // if (connect.id) {
+  //   const userId = getAuthUserId(state);
+  //   console.log('connect', connect.id);
+  //   dispatch({
+  //     type: 'SET_WS_CONNECT',
+  //     payload: {
+  //       connectId: connect.id,
+  //       userId,
+  //     },
+  //   })
+  // }
 };
 
 export const SET_AUTH_INFO = `${AUTH_STORE_KEY}/SET_AUTH_INFO`;
